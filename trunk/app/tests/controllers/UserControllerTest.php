@@ -13,12 +13,15 @@ class UserControllerTest extends TestCase
     public function testGetList()
     {
         $mockRepo = Mockery::mock('UserRepository');
-        $mockRepo->shouldReceive('all')->once()->andReturn(array('Keshav Ashta'));
+        $userList = array("id" => "1", "accessUsername" => "abcdefgh",
+            "accessKey" => "dkksdfkk342543kdfs", "username" => "kashta@greenapplesolutions.com",
+            "created_at" => "0000-00-00 00:00:00", "updated_at" => "0000-00-00 00:00:00");
+        $mockRepo->shouldReceive('all')->once()->andReturn($userList);
         $this->app->instance('UserRepository', $mockRepo);
         $reponse = $this->call('GET', '/user/list');
         $veiw = $reponse->getContent();
 
-       $userList=json_decode($veiw)->users;
-        $this->assertTrue($userList==array('Keshav Ashta'));
+        $userList = json_decode($veiw)->users;
+        $this->assertTrue($userList == $userList);
     }
 }
