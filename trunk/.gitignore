@@ -1,0 +1,5 @@
+/bootstrap/compiled.php
+.idea/*
+composer.phar
+composer.lock
+.DS_Store
