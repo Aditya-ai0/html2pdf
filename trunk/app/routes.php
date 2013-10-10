@@ -11,5 +11,9 @@
 |
 */
 
-App::bind('UserRepository', 'ArrayUserRepository');
+App::bind('UserRepository', 'EloquentUserRepository');
+
 Route::controller('user', 'UserController');
+Route::get('/', function () {
+    return "Home";
+});

@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'html2pdf',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'asdf',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

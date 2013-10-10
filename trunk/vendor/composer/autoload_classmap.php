@@ -6,16 +6,24 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'ArrayUserRepository' => $baseDir . '/app/models/ArrayUserRepository.php',
+    'ArrayUserRepository' => $baseDir . '/app/libraries/repositories/ArrayUserRepository.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
+    'EloquentUserRepository' => $baseDir . '/app/libraries/repositories/EloquentUserRepository.php',
+    'ErrorMessageException' => $baseDir . '/app/exceptions/ErrorMessageException.php',
     'HomeController' => $baseDir . '/app/controllers/HomeController.php',
     'Html2PdfConverter' => $baseDir . '/app/controllers/Html2PdfConverter.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
     'Init' => $baseDir . '/app/database/migrations/2013_10_08_195817_Init.php',
+    'NotFoundException' => $baseDir . '/app/exceptions/NotFoundException.php',
+    'PermissionException' => $baseDir . '/app/exceptions/PermissionException.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
+    'Transaction' => $baseDir . '/app/models/Transaction.php',
+    'TransactionRepository' => $baseDir . '/app/libraries/repositories/TransactionRepository.php',
     'User' => $baseDir . '/app/models/User.php',
     'UserController' => $baseDir . '/app/controllers/UserController.php',
-    'UserRepository' => $baseDir . '/app/models/UserRepository.php',
+    'UserRepository' => $baseDir . '/app/libraries/repositories/UserRepository.php',
+    'UserService' => $baseDir . '/app/libraries/services/UserService.php',
+    'ValidationException' => $baseDir . '/app/exceptions/ValidationException.php',
 );

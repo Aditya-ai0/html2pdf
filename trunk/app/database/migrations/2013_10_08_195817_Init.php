@@ -15,9 +15,9 @@ class Init extends Migration
         //create user table
         Schema::create('users', function ($table) {
             $table->increments('id')->index()->unsigned();
-            $table->string('accessUsername', 100);
-            $table->string('accessKey', 100);
-            $table->string('username', 255);
+            $table->string('accessUsername', 100)->unique();
+            $table->string('accessKey', 100)->unique();
+            $table->string('username', 255)->unique();
             $table->string('password', 100);
             $table->timestamps();
         });

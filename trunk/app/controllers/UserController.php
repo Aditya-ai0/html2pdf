@@ -10,16 +10,16 @@
 class UserController extends BaseController
 {
 
-    private $users;
+    private $userService;
 
-    public function __construct(UserRepository $userRepo)
+    public function __construct(UserService $userService)
     {
-        $this->users = $userRepo;
+        $this->userService = $userService;
     }
 
     public function getList()
     {
-        $userList = $this->users->all();
+        $userList = $this->userService->getAll();
         return Response::json(array('users' => $userList));
     }
 }

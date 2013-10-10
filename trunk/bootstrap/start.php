@@ -28,7 +28,7 @@ $app->redirectIfTrailingSlash();
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('your-machine-name'),
+	'local' => array('html2pdf.localhost.com'),
     'home'=>array('keshav-pc')
 
 ));
