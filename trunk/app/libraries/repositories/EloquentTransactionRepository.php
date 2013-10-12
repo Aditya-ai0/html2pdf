@@ -7,15 +7,16 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class EloquentTransactionRepository implements TransactionRepository
+class EloquentTransactionRepositoryInterface implements TransactionRepositoryInterface
 {
 
-    public function create($converterId, $fileName, $fileSize, $tokens, $startTime, $endTime,
+    public function create($converterId, $userId, $fileName, $fileSize, $tokens, $startTime, $endTime,
                            $processId, $isKilled)
     {
         try {
             $transaction = new Transaction();
             $transaction->converterId = $converterId;
+            $transaction->userId = $userId;
             $transaction->fileName = $fileName;
             $transaction->fileSize = $fileSize;
             $transaction->tokens = $tokens;
@@ -31,7 +32,7 @@ class EloquentTransactionRepository implements TransactionRepository
         }
     }
 
-    public function getTransaction($id, $converterId, $fileName, $fileSize, $tokens, $startTime, $endTime,
+    public function getTransaction($id, $converterId, $userId, $fileName, $fileSize, $tokens, $startTime, $endTime,
                                    $processId, $isKilled)
     {
         try {
@@ -40,6 +41,8 @@ class EloquentTransactionRepository implements TransactionRepository
                 $query->where('id', '=', $id);
             if (!is_null($converterId))
                 $query->where('converterId', '=', $converterId);
+            if (!is_null($userId))
+                $query->where('userId', '=', $userId);
             if (!is_null($fileName))
                 $query->where('fileName', '=', $fileName);
             if (!is_null('fileSize'))
@@ -57,13 +60,15 @@ class EloquentTransactionRepository implements TransactionRepository
         }
     }
 
-    public function updateTransaction($id, $converterId, $fileName, $fileSize, $tokens, $startTime, $endTime,
+    public function updateTransaction($id, $converterId, $userId, $fileName, $fileSize, $tokens, $startTime, $endTime,
                                       $processId, $isKilled)
     {
         try {
             $transaction = Transaction::where('id', '=', $id)->first();
             if (!is_null($fileName))
                 $transaction->fileName = $fileName;
+            if (!is_null($userId))
+                $transaction->userId = $userId;
             if (!is_null($fileSize))
                 $transaction->fileSize = $fileSize;
             if (!is_null($tokens))

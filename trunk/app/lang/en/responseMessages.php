@@ -12,6 +12,7 @@ return array(
     'unauthorisedAccess' => 'Insufficient privileges to perform this action',
     'resourceNotFound' => 'The requested resource was not found',
     'error' => 'An error was encountered',
-    'badRequest' => 'Bad Request'
+    'badRequest' => 'Bad Request',
+    'internalServer' => 'Internal Server Error'
 
 );

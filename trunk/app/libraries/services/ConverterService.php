@@ -12,19 +12,33 @@ class ConverterService
 
     private $converterRepo;
 
-    public function __construct(ConverterRepository $converterRepo)
+    public function __construct(ConverterRepositoryInterface $converterRepo)
     {
         $this->converterRepo = $converterRepo;
     }
 
     public function addConverter($name, $location, $status)
     {
+        $converter = $this->getConverter(null, null, $location, null);
+        if ($converter)
+            throw new InvalidArgumentException("converter already exist at this location");
         return $this->converterRepo->addConverter($name, $location, $status);
     }
 
     public function getConverter($id = null, $name = null, $location = null, $status = null)
     {
         return $this->converterRepo->getConverter($id, $name, $location, $status);
+    }
+
+
+    public function getLock($id)
+    {
+        return $this->converterRepo->getLock($id);
+    }
+
+    public function releaseLock($id)
+    {
+        return $this->converterRepo->releaseLock($id);
     }
 
 }

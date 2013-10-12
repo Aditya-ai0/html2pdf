@@ -11,9 +11,13 @@
 |
 */
 
-App::bind('UserRepository', 'EloquentUserRepository');
+App::bind('UserRepositoryInterface', 'EloquentUserRepository');
+App::bind('ConverterRepositoryInterface', 'EloquentConverterRepository');
+App::bind('TransactionRepositoryInterface', 'EloquentTransactionRepository');
+App::bind('PDFConverter', 'WKHTMLPDfConverter');
 
 Route::controller('user', 'UserController');
-Route::get('/', function () {
-    return "Home";
-});
+Route::controller('converter', 'ConverterController');
+Route::controller('/', 'Html2PdfConverterController');
+
+

@@ -34,8 +34,10 @@ class Init extends Migration
             $table->increments('id')->index()->unsigned();
             $table->integer('converterId')->index()->unsigned();
             $table->foreign('converterId')->references('id')->on('converters')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('userId')->index()->unsigned();
+            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('fileName', 1000)->nullable();
-            $table->float('fileSize')->default(0);
+            $table->integer('fileSize')->default(0);
             $table->integer('tokens')->default(1);
             $table->dateTime('startTime');
             $table->dateTime('endTime')->nullable();
@@ -52,6 +54,10 @@ class Init extends Migration
      */
     public function down()
     {
+        Schema::table('transactions', function ($table) {
+            $table->dropForeign('transactions_userid_foreign');
+        });
+
         Schema::table('transactions', function ($table) {
             $table->dropForeign('transactions_converterid_foreign');
         });

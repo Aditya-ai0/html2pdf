@@ -11,23 +11,23 @@ class TransactionService
 {
     private $transactionRepository;
 
-    public function __construct(TransactionRepository $transactionRepository)
+    public function __construct(TransactionRepositoryInterface $transactionRepository)
     {
         $this->transactionRepository = $transactionRepository;
     }
 
-    public function create($converterId, $fileName, $fileSize, $tokens, $startTime, $endTime,
+    public function create($converterId, $userId, $fileName, $fileSize, $tokens, $startTime, $endTime,
                            $processId, $isKilled)
     {
-        return $this->transactionRepository->create($converterId, $fileName, $fileSize, $tokens, $startTime, $endTime,
+        return $this->transactionRepository->create($converterId, $userId, $fileName, $fileSize, $tokens, $startTime, $endTime,
             $processId, $isKilled);
 
     }
 
-    public function updateTransaction($id, $converterId, $fileName, $fileSize, $tokens, $startTime, $endTime,
+    public function updateTransaction($id, $converterId, $userId, $fileName, $fileSize, $tokens, $startTime, $endTime,
                                       $processId, $isKilled)
     {
-        return $this->transactionRepository->updateTransaction($id, $converterId, $fileName, $fileSize, $tokens, $startTime, $endTime,
+        return $this->transactionRepository->updateTransaction($id, $converterId, $userId, $fileName, $fileSize, $tokens, $startTime, $endTime,
             $processId, $isKilled);
     }
 }

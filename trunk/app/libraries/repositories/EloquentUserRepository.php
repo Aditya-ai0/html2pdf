@@ -7,13 +7,13 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class EloquentUserRepository implements UserRepository
+class EloquentUserRepositoryInterface implements UserRepositoryInterface
 {
 
     public function all()
     {
         try {
-            return User::all()->toArray();
+            return User::all();
         } catch (Exception $e) {
             Log::error($e);
             throw $e;
@@ -32,7 +32,7 @@ class EloquentUserRepository implements UserRepository
                 $query->where('accessKey', '=', $accessKey);
             if ($userName)
                 $query->where('username', '=', $userName);
-            return $query->first()->toArray();
+            return $query->first();
         } catch (Exception $e) {
             Log::error($e);
             throw $e;
@@ -48,7 +48,7 @@ class EloquentUserRepository implements UserRepository
             $user->username = $userName;
             $user->password = $password;
             $user->save();
-            return $user->toArray();
+            return $user;
         } catch (Exception $e) {
             Log::error($e);
             throw $e;
@@ -58,5 +58,10 @@ class EloquentUserRepository implements UserRepository
     public function getUserList($id, $accessUserName, $accessKey, $userName)
     {
         // TODO: Implement getUserList() method.
+    }
+
+    public function createUser($accessUsername, $accessKey, $userName, $password)
+    {
+        // TODO: Implement createUser() method.
     }
 }
