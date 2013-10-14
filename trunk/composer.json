@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.0.*",
         "barryvdh/laravel-vendor-cleanup": "1.*",
-        "mockery/mockery": "dev-master"
+        "mockery/mockery": "dev-master",
+        "zizaco/factory-muff": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

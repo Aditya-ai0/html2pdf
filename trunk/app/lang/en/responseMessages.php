@@ -8,7 +8,7 @@
  */
 
 return array(
-    'invalidApiKey' => 'Invalid API key',
+    'invalidUserNamePassword' => 'Invalid username or password',
     'unauthorisedAccess' => 'Insufficient privileges to perform this action',
     'resourceNotFound' => 'The requested resource was not found',
     'error' => 'An error was encountered',

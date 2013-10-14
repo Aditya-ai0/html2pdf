@@ -12,4 +12,10 @@ class Converter extends Eloquent
 
     protected $table = "converters";
 
+    public static $factory = array(
+        'id' => 'integer',
+        'name' => 'string',
+        'location' => 'string',
+        'status' => ConverterStatuses::IDLE
+    );
 }

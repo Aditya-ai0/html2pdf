@@ -19,9 +19,9 @@ class UserControllerTest extends TestCase
         $mockRepo->shouldReceive('all')->once()->andReturn($userList);
         $this->app->instance('UserRepository', $mockRepo);
         $reponse = $this->call('GET', '/user/list');
-        $veiw = $reponse->getContent();
+        $response = $reponse->getContent();
 
-        $userList = json_decode($veiw)->users;
+        $userList = json_decode($response)->users;
         $this->assertTrue($userList == $userList);
     }
 }
