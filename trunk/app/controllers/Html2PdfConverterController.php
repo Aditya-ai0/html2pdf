@@ -60,7 +60,8 @@ class Html2PdfConverterController extends BaseController
             if (is_null($converter))
                 return Response::json(array('error' => 'All instances are busy'), 501);
             $this->converterService->getLock($converter->id);
-            $transaction = $this->transactionService->create($converter->id, $user->id, $name, 0, 1, new DateTime(), null, null, false);
+            $transaction = $this->transactionService->create($converter->id, $user->id, $name, 0, 1, new DateTime(),
+                null, null, false);
 
             $pdfConverterDetails = $this->pdfConverter->convert($converter->location, $html);
             // as exec run processes in background
@@ -72,7 +73,8 @@ class Html2PdfConverterController extends BaseController
             if ($fileSize == 0)
                 $fileSize = 512 * 1024;
             $tokens = ceil($fileSize / (512 * 1024));
-            $transaction = $this->transactionService->updateTransaction($transaction->id, null, $user->id, null, $fileSize, $tokens,
+            $transaction = $this->transactionService->updateTransaction($transaction->id, null,
+                $user->id, null, $fileSize, $tokens,
                 null, new DateTime(), $pdfConverterDetails['processId'], false);
             if (File::isFile($pdfConverterDetails['filePath']))
                 return Response::download($pdfConverterDetails['filePath'], $name);

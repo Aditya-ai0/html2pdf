@@ -42,13 +42,20 @@ class Html2PdfConverterTest extends TestCase
         $convertRepoInterfaceMock = Mockery::mock('ConverterRepositoryInterface');
         $this->app->instance('ConverterRepositoryInterface', $convertRepoInterfaceMock);
 
-        $transactionRepositoryInterfaceMock = Mockery::mock('TransactionRepositoryInterface');
-        $this->app->instance('TransactionRepositoryInterface', $transactionRepositoryInterfaceMock);
+//        $transactionRepo = Mockery::mock('TransactionRepository[create,updateTransaction]');
+//        $this->app->instance('TransactionRepository', $transactionRepo);
+
+//        $transactionRepositoryInterfaceMock = Mockery::mock('TransactionRepositoryInterface');
+//        $this->app->instance('TransactionRepositoryInterface', $transactionRepositoryInterfaceMock);
 
         $convertRepoInterfaceMock->shouldReceive('getConverter')->andReturn($converter);
         $convertRepoInterfaceMock->shouldReceive('getLock');
-        $transactionRepositoryInterfaceMock->shouldReceive('create');
 
+        $transactionService->shouldReceive('create')->with($converter->id, $user->id, "", 0, 1, new DateTime(),
+            null, null, false)->once()->andReturn(array('filePath' => public_path() . '/robots.txt'));
+
+
+//        $transactionRepositoryInterfaceMock->shouldReceive('updateTransaction')->andReturn($transaction);
 
         $params = array(
             'accessUsername' => 'string',
@@ -57,7 +64,8 @@ class Html2PdfConverterTest extends TestCase
         );
 
         $response = $this->action('POST', 'Html2PdfConverterController@postPdf', $params);
-        $this->assertTrue($response->isOk());
+        $this->assertResponseOk();
+        $this->assertResponseStatus(200);
 
 
     }
