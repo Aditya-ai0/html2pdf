@@ -13,3 +13,17 @@ class ConverterStatuses
     const BUSY = 1;
 }
 
+class HTTPConstants
+{
+    const SUCCESS_CODE = 200;
+    const RESOURCE_CREATED = 201;
+    const RESOURCE_CHANGED = 202;
+    const RESOURCE_DELETED = 204;
+    const NOT_FOUND = 400;
+    const AUTHENTICATION_FAILED = 401;
+    const TIME_OUT = 408;
+    const HTTP_METHOD_NOT_FOUND = 405;
+    const DATABASE_ERROR_CODE = 500;
+    const SERVICE_NOT_AVAILABLE = 500;
+}
+

@@ -24,7 +24,7 @@ class Transaction extends Eloquent
 
     public static $factory = array(
         'id' => 'integer',
-        'converterId' => 'integer',
+        'converterId' => 'factory|Converter',
         'userId' => 'integer',
         'fileName' => 'string',
         'fileSize' => 'integer',
@@ -38,4 +38,14 @@ class Transaction extends Eloquent
     {
         return gmdate('Y-m-d H:i:s');
     }
+
+    protected $fillable = array('id',
+        'converterId',
+        'userId',
+        'fileName',
+        'fileSize',
+        'tokens',
+        'startTime',
+        'endTime',
+        'processId');
 }

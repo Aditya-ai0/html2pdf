@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class EloquentTransactionRepositoryInterface implements TransactionRepositoryInterface
+class EloquentTransactionRepository implements TransactionRepositoryInterface
 {
 
     public function create($converterId, $userId, $fileName, $fileSize, $tokens, $startTime, $endTime,

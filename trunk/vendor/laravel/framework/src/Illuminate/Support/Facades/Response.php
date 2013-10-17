@@ -88,7 +88,7 @@ class Response {
 	{
 		$response = new BinaryFileResponse($file, 200, $headers, true, 'attachment');
 
-		if ( ! is_null($name))
+		if (!is_null($name))
 		{
 			return $response->setContentDisposition('attachment', $name);
 		}

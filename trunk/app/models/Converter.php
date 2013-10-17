@@ -18,4 +18,9 @@ class Converter extends Eloquent
         'location' => 'string',
         'status' => ConverterStatuses::IDLE
     );
+
+    protected $fillable = array('id',
+        'name',
+        'location',
+        'status');
 }

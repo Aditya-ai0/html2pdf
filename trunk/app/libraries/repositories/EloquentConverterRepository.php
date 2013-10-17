@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class EloquentConverterRepositoryInterface implements ConverterRepositoryInterface
+class EloquentConverterRepository implements ConverterRepositoryInterface
 {
 
 
@@ -30,14 +30,14 @@ class EloquentConverterRepositoryInterface implements ConverterRepositoryInterfa
     public function getConverter($id, $name, $location, $status)
     {
         try {
-            $query = Converter::getQuery();
-            if ($id)
+            $query = Converter::query();
+            if (!is_null($id))
                 $query->where('id', '=', $id);
-            if ($name)
+            if (!is_null($name))
                 $query->where('name', '=', $name);
-            if ($location)
+            if (!is_null($location))
                 $query->where('location', '=', $location);
-            if ($status)
+            if (!is_null($status))
                 $query->where('status', '=', $status);
             return $query->first();
         } catch (Exception $e) {
@@ -61,13 +61,14 @@ class EloquentConverterRepositoryInterface implements ConverterRepositoryInterfa
     {
         try {
             $converter = Converter::where('id', '=', $id)->first();
-            if ($name)
+            if (!is_null($name))
                 $converter->name = $name;
-            if ($location)
+            if (!is_null($location))
                 $converter->location = $location;
-            if ($status)
+            if (!is_null($status))
                 $converter->status = $status;
-            return $converter->save();
+            $converter->save();
+            return $converter;
         } catch (Exception $e) {
             Log::error($e);
             throw $e;
@@ -85,10 +86,11 @@ class EloquentConverterRepositoryInterface implements ConverterRepositoryInterfa
     {
         try {
             $currentObject = $this;
-            DB::transaction(function () use ($id, $currentObject) {
-                $currentObject->updateConverter($id, null, null, ConverterStatuses::BUSY);
+            return DB::transaction(function () use ($id, $currentObject) {
+                return $currentObject->updateConverter($id, null, null, ConverterStatuses::BUSY);
             });
         } catch (Exception $e) {
+            Log::error($e);
             throw $e;
         }
 
@@ -103,10 +105,11 @@ class EloquentConverterRepositoryInterface implements ConverterRepositoryInterfa
     {
         try {
             $currentObject = $this;
-            DB::transaction(function () use ($id, $currentObject) {
-                $currentObject->updateConverter($id, null, null, ConverterStatuses::IDLE);
+            return DB::transaction(function () use ($id, $currentObject) {
+                return $currentObject->updateConverter($id, null, null, ConverterStatuses::IDLE);
             });
         } catch (Exception $e) {
+            Log::error($e);
             throw $e;
         }
     }

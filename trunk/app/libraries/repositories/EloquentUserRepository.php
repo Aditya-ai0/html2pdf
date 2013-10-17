@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class EloquentUserRepositoryInterface implements UserRepositoryInterface
+class EloquentUserRepository implements UserRepositoryInterface
 {
 
     public function all()
@@ -24,13 +24,13 @@ class EloquentUserRepositoryInterface implements UserRepositoryInterface
     {
         try {
             $query = User::getQuery();
-            if ($id)
+            if (!is_null($id))
                 $query->where('id', '=', $id);
-            if ($accessUserName)
+            if (!is_null($accessUserName))
                 $query->where('accessUsername', '=', $accessUserName);
-            if ($accessKey)
+            if (!is_null($accessKey))
                 $query->where('accessKey', '=', $accessKey);
-            if ($userName)
+            if (!is_null($userName))
                 $query->where('username', '=', $userName);
             return $query->first();
         } catch (Exception $e) {

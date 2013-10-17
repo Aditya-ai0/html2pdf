@@ -41,9 +41,10 @@ class WKHTMLPDfConverter implements PDFConverter
 
     public function convert($location, $html, $header = true)
     {
+
         if ($this->header)
             $this->header = "Page [page] of [toPage]";
-        $this->location = Config::get('custom.wkhtlPath').$location;
+        $this->location = Config::get('custom.wkhtlPath') . $location;
         try {
             $tmp_path = Config::get('custom.pdfDirectory') . Util::GUID() . '.html';
             $fp = fopen($tmp_path, "w+");
@@ -61,13 +62,13 @@ class WKHTMLPDfConverter implements PDFConverter
                 . " $html_path $filePath";
 
             $command = $cmd . ' > /dev/null 2>&1 & echo $!; ';
-
             $pid = exec($command, $output);
 
 
-            unlink($tmp_path);
+//            unlink($tmp_path);
             return array('processId' => $pid, 'filePath' => $filePath);
         } catch (Exception $e) {
+            Log::error($e);
             throw $e;
         }
     }

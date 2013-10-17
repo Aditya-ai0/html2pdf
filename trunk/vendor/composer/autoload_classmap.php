@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'ArrayUserRepositoryInterface' => $baseDir . '/app/libraries/repositories/ArrayUserRepository.php',
+    'ArrayUserRepository' => $baseDir . '/app/libraries/repositories/ArrayUserRepository.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Converter' => $baseDir . '/app/models/Converter.php',
     'ConverterController' => $baseDir . '/app/controllers/ConverterController.php',
@@ -14,10 +14,12 @@ return array(
     'ConverterService' => $baseDir . '/app/libraries/services/ConverterService.php',
     'ConverterStatuses' => $baseDir . '/app/libraries/Constants.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
-    'EloquentConverterRepositoryInterface' => $baseDir . '/app/libraries/repositories/EloquentConverterRepository.php',
-    'EloquentTransactionRepositoryInterface' => $baseDir . '/app/libraries/repositories/EloquentTransactionRepository.php',
-    'EloquentUserRepositoryInterface' => $baseDir . '/app/libraries/repositories/EloquentUserRepository.php',
+    'EloquentConverterRepository' => $baseDir . '/app/libraries/repositories/EloquentConverterRepository.php',
+    'EloquentTransactionRepository' => $baseDir . '/app/libraries/repositories/EloquentTransactionRepository.php',
+    'EloquentUserRepository' => $baseDir . '/app/libraries/repositories/EloquentUserRepository.php',
     'ErrorMessageException' => $baseDir . '/app/exceptions/ErrorMessageException.php',
+    'ExtendedResponse' => $baseDir . '/app/libraries/ExtendedResponse.php',
+    'HTTPConstants' => $baseDir . '/app/libraries/Constants.php',
     'HomeController' => $baseDir . '/app/controllers/HomeController.php',
     'Html2PdfConverterController' => $baseDir . '/app/controllers/Html2PdfConverterController.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
@@ -25,6 +27,7 @@ return array(
     'NotFoundException' => $baseDir . '/app/exceptions/NotFoundException.php',
     'PDFConverter' => $baseDir . '/app/libraries/services/PDFConverter.php',
     'PermissionException' => $baseDir . '/app/exceptions/PermissionException.php',
+    'ProcessService' => $baseDir . '/app/libraries/services/ProcessService.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'Transaction' => $baseDir . '/app/models/Transaction.php',

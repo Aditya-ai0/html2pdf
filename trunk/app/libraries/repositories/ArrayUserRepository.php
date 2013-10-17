@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class ArrayUserRepositoryInterface implements UserRepositoryInterface
+class ArrayUserRepository implements UserRepositoryInterface
 {
 
     public function all()

@@ -13,6 +13,8 @@ return array(
     'resourceNotFound' => 'The requested resource was not found',
     'error' => 'An error was encountered',
     'badRequest' => 'Bad Request',
-    'internalServer' => 'Internal Server Error'
+    'internalServer' => 'Internal Server Error',
+    'maximumExecutionTimeout' => 'maximum execution time exceeded',
+    'serviceUnavailable' => 'service not available',
 
 );
