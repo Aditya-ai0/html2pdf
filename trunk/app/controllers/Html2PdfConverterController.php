@@ -87,10 +87,7 @@ class Html2PdfConverterController extends BaseController
             $fileSize = 0;
             if (File::isFile($pdfConverterDetails['filePath']))
                 $fileSize = File::size($pdfConverterDetails['filePath']);
-            if ($fileSize == 0)
-                $fileSize = 512 * 1024;
-
-            $tokens = ceil($fileSize / (512 * 1024));
+            $tokens = ($fileSize == 0) ? 1 : ceil($fileSize / (512 * 1024));
 
             $transaction = $this->transactionService->updateTransaction($transaction->id, null,
                 $user->id, null, $fileSize, $tokens,

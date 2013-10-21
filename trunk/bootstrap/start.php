@@ -28,10 +28,11 @@ $app->redirectIfTrailingSlash();
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('html2pdf.localhost.com'),
-    'home'=>array('keshav-pc')
+    'local' => array('html2pdf.localhost.com'),
+    'home' => array('keshav-pc'),
+    'prod' => array('54.251.193.180', 'ec2-54-251-193-180.ap-southeast-1.compute.amazonaws.com'
+    )));
 
-));
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,7 @@ $env = $app->detectEnvironment(array(
 |
 */
 
-$app->bindInstallPaths(require __DIR__.'/paths.php');
+$app->bindInstallPaths(require __DIR__ . '/paths.php');
 
 /*
 |--------------------------------------------------------------------------
@@ -57,9 +58,9 @@ $app->bindInstallPaths(require __DIR__.'/paths.php');
 |
 */
 
-$framework = $app['path.base'].'/vendor/laravel/framework/src';
+$framework = $app['path.base'] . '/vendor/laravel/framework/src';
 
-require $framework.'/Illuminate/Foundation/start.php';
+require $framework . '/Illuminate/Foundation/start.php';
 
 /*
 |--------------------------------------------------------------------------
