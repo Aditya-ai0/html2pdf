@@ -85,6 +85,9 @@ class Html2PdfConverterController extends BaseController
                 $this->processService->killProcess($pdfConverterDetails['processId']);
             $this->converterService->releaseLock($converter->id);
             $fileSize = 0;
+            //deleting html file
+            if (File::isFile($pdfConverterDetails['htmlPath']))
+                File::delete($pdfConverterDetails['htmlPath']);
             if (File::isFile($pdfConverterDetails['filePath']))
                 $fileSize = File::size($pdfConverterDetails['filePath']);
             $tokens = ($fileSize == 0) ? 1 : ceil($fileSize / (512 * 1024));

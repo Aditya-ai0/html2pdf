@@ -63,10 +63,8 @@ class WKHTMLPDfConverter implements PDFConverter
 
             $command = $cmd . ' > /dev/null 2>&1 & echo $!; ';
             $pid = exec($command, $output);
-
-
 //            unlink($tmp_path);
-            return array('processId' => $pid, 'filePath' => $filePath);
+            return array('processId' => $pid, 'filePath' => $filePath,'htmlPath'=>$tmp_path);
         } catch (Exception $e) {
             Log::error($e);
             throw $e;
